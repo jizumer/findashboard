@@ -1,0 +1,26 @@
+{
+  "name": "findashboard",
+  "version": "1.0.0",
+  "description": "Personal financial dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jizumer/findashboard.git"
+  },
+  "author": "@jizumer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jizumer/findashboard/issues"
+  },
+  "homepage": "https://github.com/jizumer/findashboard#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-edge": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
