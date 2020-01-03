@@ -3,11 +3,11 @@
 @section('content')
 
 <!-- Page Header -->
-    @if(backgroundUrl)
-    <header class="masthead" style="background-image: url('{{backgroundUrl}}')">
+@if(backgroundUrl)
+<header class="masthead" style="background-image: url('{{backgroundUrl}}')">
     @else
     <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    @endif
+        @endif
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -39,55 +39,30 @@
                         on September 24, 2019</p>
                 </div>
                 <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            I believe every human has a finite number of heartbeats. I don't intend to waste any of
-                            mine.
-                        </h2>
-                    </a>
-                    <p class="post-meta">Posted by
-                        <a href="#">Start Bootstrap</a>
-                        on September 18, 2019</p>
+                @if(stockData)
+                <!-- Area Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Global position</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaChart" stockLabels="{{stockData.labels}}"
+                                stockValues="{{stockData.values}}"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Science has not yet mastered prophecy
-                        </h2>
-                        <h3 class="post-subtitle">
-                            We predict too much for the next year and yet far too little for the next ten.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by
-                        <a href="#">Start Bootstrap</a>
-                        on August 24, 2019</p>
-                </div>
-                <hr>
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Failure is not an option
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Many say exploration is part of our destiny, but it’s actually our duty to future
-                            generations.
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by
-                        <a href="#">Start Bootstrap</a>
-                        on July 8, 2019</p>
-                </div>
-                <hr>
-                <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-                </div>
+                @endif
             </div>
         </div>
     </div>
 
     <hr>
+    @if(stockData)
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
 
+    <!-- Page level custom scripts -->
+    <script src="/js/chart-area.js"></script>
+    @endif
     @endsection
