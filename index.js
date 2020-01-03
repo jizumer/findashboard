@@ -3,6 +3,7 @@ const { config, engine } = require('express-edge')
 const mongoose = require('mongoose')
 const app = new express();
 const randomBackgroundLoader = require('./js/bg-loader')
+const utils = require('./js/utils')
 const stockUpdater = require('./js/stock-updater')
 const stockRepo = require('./database/models/repository/StockRepo')
 const cron = require("node-cron");
@@ -24,10 +25,16 @@ app.get(['/', '\/index(\.html)?'], async (req, res) => {
 
     let repo = new stockRepo();
     let stockData = await repo.findByName('BTC')
+    let stockNames = [{
+        name: 'BTC'
+    }]
+    
 
     res.render('index', {
         backgroundUrl,
-        stockData
+        stockData,
+        stockNames,
+        lastUpdate : utils.formatCustomDate(new Date())
     })
 })
 

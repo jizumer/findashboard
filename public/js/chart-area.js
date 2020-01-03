@@ -32,8 +32,6 @@ var ctx = document.getElementById("myAreaChart");
 
 let stockLabels = ctx.getAttribute('stockLabels')
 let stockValues = ctx.getAttribute('stockValues')
-console.log(stockLabels)
-console.log(stockValues)
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {

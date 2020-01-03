@@ -1,12 +1,5 @@
 const StockModel = require('../Stock')
-const formatCustomDate = (dateToFormat) => {
-    return dateToFormat.getFullYear()
-        + "-" + (dateToFormat.getMonth() + 1)
-        + "-" + dateToFormat.getDate() + " "
-        + dateToFormat.getHours() + ":"
-        + dateToFormat.getMinutes()
-        + ":" + dateToFormat.getSeconds()
-}
+const utils = require('../../../js/utils')
 class StockRepo {
 
     create(name, value, timestamp) {
@@ -16,7 +9,7 @@ class StockRepo {
             timestamp: timestamp
         }, (error, stock) => {
             let current_datetime = new Date()
-            let formatted_date = formatCustomDate(current_datetime)
+            let formatted_date = utils.formatCustomDate(current_datetime)
             if (error === null) {
                 console.log(formatted_date + ' Successfully created stock ' + stock.name)
             }
@@ -34,7 +27,7 @@ class StockRepo {
                 let labels = []
                 let amounts = [];
                 for (let i = 0; i < values.length; i++) {
-                    labels[i] = formatCustomDate(values[i].timestamp)
+                    labels[i] = utils.formatCustomDate(values[i].timestamp)
                     amounts[i] = values[i].value
                 }
                 let data = []
